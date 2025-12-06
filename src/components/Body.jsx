@@ -24,7 +24,6 @@ const Body = () => {
       if (error.status === 401) {
         navigate("/login");
       }
-
       console.error(error);
     }
   };
@@ -34,13 +33,17 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <NavBar />
-      <Outlet />
+
+      {/* Page content grows and pushes footer down */}
+      <div className="flex-1">
+        <Outlet />
+      </div>
+
       <Footer />
     </div>
   );
 };
 
 export default Body;
- 
