@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 
@@ -13,6 +13,7 @@ import PrivacyPolicy from "./pages/LegalPrivacy";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
 import Premium from "./components/Premium";
+import Chat from "./components/Chat";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="terms" element={<Terms />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="chat/:targetUserId" element={<Chat />} />
           </Route>
         </Routes>
       </BrowserRouter>
