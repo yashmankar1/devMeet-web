@@ -11,7 +11,6 @@ const Connections = () => {
   const [loading, setLoading] = useState(!connections);
 
   const fetchConnections = async () => {
-    if (connections) return;
     setLoading(true);
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import { removeConnections } from "../utils/connectionSlice";
+import { addFeed } from "../utils/feedSlice";
+import { addRequests } from "../utils/requestSlice";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -12,7 +15,11 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      // Clear all Redux slices so next login starts fresh
       dispatch(removeUser());
+      dispatch(removeConnections());
+      dispatch(addFeed(null));
+      dispatch(addRequests(null));
       navigate("/login");
     } catch (error) {
       console.error(error);
