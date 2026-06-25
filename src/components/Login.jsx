@@ -12,28 +12,31 @@ const Login = () => {
   const [lastName, setLastName] = useState("");
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setError("");
+    setLoading(true);
     try {
       const res = await axios.post(
         BASE_URL + "/login",
-        {
-          emailId,
-          password,
-        },
+        { emailId, password },
         { withCredentials: true }
       );
-
       dispatch(addUser(res.data));
-      return navigate("/");
+      navigate("/");
     } catch (error) {
       setError(error?.response?.data || "Something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSignUp = async () => {
+    setError("");
+    setLoading(true);
     try {
       const res = await axios.post(
         BASE_URL + "/signup",
@@ -41,84 +44,117 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.data));
-      return navigate("/profile");
+      navigate("/profile");
     } catch (error) {
       setError(error?.response?.data || "Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      isLoginForm ? handleLogin() : handleSignUp();
     }
   };
 
   return (
-    <div className="flex justify-center my-10">
-      <div className="card bg-base-300 w-96 shadow-sm">
-        <div className="card-body">
-          <h2 className="card-title justify-center">
-            {isLoginForm ? "Login" : "SignUp"}
+    <div className="flex justify-center items-center min-h-[80vh] px-4">
+      <div className="card bg-base-300 w-full max-w-md shadow-xl">
+        <div className="card-body gap-4">
+          {/* Logo / Brand */}
+          <div className="text-center mb-2">
+            <h1 className="text-3xl font-bold text-primary">💻 devMeet</h1>
+            <p className="text-sm opacity-60 mt-1">Connect with developers</p>
+          </div>
+
+          <h2 className="card-title justify-center text-xl">
+            {isLoginForm ? "Welcome back!" : "Create account"}
           </h2>
-          <div>
-            {!isLoginForm && (
-              <>
-                {" "}
-                <fieldset className="fieldset">
-                  <legend className="fieldset-legend">First Name</legend>
-                  <input
-                    type="text"
-                    value={firstName}
-                    className="input"
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </fieldset>
-                <fieldset className="fieldset">
-                  <legend className="fieldset-legend">Last Name</legend>
-                  <input
-                    type="text"
-                    value={lastName}
-                    className="input"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </fieldset>{" "}
-              </>
-            )}
 
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Email Id</legend>
-              <input
-                type="email"
-                value={emailId}
-                className="input"
-                onChange={(e) => setEmailId(e.target.value)}
-              />
-            </fieldset>
-          </div>
+          {!isLoginForm && (
+            <div className="flex gap-2">
+              <fieldset className="fieldset flex-1">
+                <legend className="fieldset-legend">First Name</legend>
+                <input
+                  type="text"
+                  value={firstName}
+                  className="input w-full"
+                  placeholder="John"
+                  onChange={(e) => setFirstName(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </fieldset>
+              <fieldset className="fieldset flex-1">
+                <legend className="fieldset-legend">Last Name</legend>
+                <input
+                  type="text"
+                  value={lastName}
+                  className="input w-full"
+                  placeholder="Doe"
+                  onChange={(e) => setLastName(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </fieldset>
+            </div>
+          )}
 
-          <div>
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Password</legend>
-              <input
-                type="password"
-                value={password}
-                className="input"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </fieldset>
-          </div>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">Email</legend>
+            <input
+              type="email"
+              value={emailId}
+              className="input w-full"
+              placeholder="john@example.com"
+              onChange={(e) => setEmailId(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+          </fieldset>
 
-          <p className="text-red-500">{error}</p>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">Password</legend>
+            <input
+              type="password"
+              value={password}
+              className="input w-full"
+              placeholder="••••••••"
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+          </fieldset>
 
-          <div className="card-actions justify-center">
+          {error && (
+            <div className="alert alert-error py-2 text-sm">
+              <span>{error}</span>
+            </div>
+          )}
+
+          <div className="card-actions justify-center mt-2">
             <button
-              className="btn btn-primary my-2"
+              className="btn btn-primary w-full"
               onClick={isLoginForm ? handleLogin : handleSignUp}
+              disabled={loading}
             >
-              {isLoginForm ? "Login" : "Sign Up"}
+              {loading ? (
+                <span className="loading loading-spinner loading-sm"></span>
+              ) : isLoginForm ? (
+                "Login"
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
+
           <p
-            className="m-auto cursor-pointer py-2"
-            onClick={() => setIsLoginForm((value) => !value)}
+            className="text-center text-sm cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
+            onClick={() => {
+              setError("");
+              setIsLoginForm((v) => !v);
+            }}
           >
             {isLoginForm
-              ? "New User? SignUp Here"
-              : "Existing User? Login Here"}
+              ? "New here? Create an account →"
+              : "Already have an account? Login →"}
           </p>
         </div>
       </div>
