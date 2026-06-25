@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(!connections);
 
   const fetchConnections = async () => {
     if (connections) return;
