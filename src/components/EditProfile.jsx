@@ -23,7 +23,14 @@ const EditProfile = ({ user }) => {
     try {
       const res = await axios.patch(
         BASE_URL + "/profile/edit",
-        { firstName, lastName, photoUrl, age, gender, about },
+        {
+          firstName,
+          lastName,
+          photoUrl,
+          ...(age && { age: Number(age) }),
+          ...(gender && { gender }),
+          about,
+        },
         { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
@@ -141,6 +148,7 @@ const EditProfile = ({ user }) => {
           <p className="text-sm opacity-50 font-medium uppercase tracking-wider">Preview</p>
           <UserCard
             user={{ firstName, lastName, photoUrl, age, gender, about }}
+            isPreview={true}
           />
         </div>
       </div>

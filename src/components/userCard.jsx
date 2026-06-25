@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 import { useState } from "react";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, isPreview = false }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about, skills } = user;
   const dispatch = useDispatch();
-  const [loadingStatus, setLoadingStatus] = useState(null); // "ignored" | "interested" | null
+  const [loadingStatus, setLoadingStatus] = useState(null);
 
   const handleSendRequest = async (status, userId) => {
     setLoadingStatus(status);
@@ -56,30 +56,32 @@ const UserCard = ({ user }) => {
           </div>
         )}
 
-        <div className="card-actions justify-center gap-4 mt-2">
-          <button
-            className="btn btn-outline btn-error flex-1"
-            onClick={() => handleSendRequest("ignored", _id)}
-            disabled={loadingStatus !== null}
-          >
-            {loadingStatus === "ignored" ? (
-              <span className="loading loading-spinner loading-sm"></span>
-            ) : (
-              "✕ Ignore"
-            )}
-          </button>
-          <button
-            className="btn btn-primary flex-1"
-            onClick={() => handleSendRequest("interested", _id)}
-            disabled={loadingStatus !== null}
-          >
-            {loadingStatus === "interested" ? (
-              <span className="loading loading-spinner loading-sm"></span>
-            ) : (
-              "♥ Interested"
-            )}
-          </button>
-        </div>
+        {!isPreview && (
+          <div className="card-actions justify-center gap-4 mt-2">
+            <button
+              className="btn btn-outline btn-error flex-1"
+              onClick={() => handleSendRequest("ignored", _id)}
+              disabled={loadingStatus !== null}
+            >
+              {loadingStatus === "ignored" ? (
+                <span className="loading loading-spinner loading-sm"></span>
+              ) : (
+                "✕ Ignore"
+              )}
+            </button>
+            <button
+              className="btn btn-primary flex-1"
+              onClick={() => handleSendRequest("interested", _id)}
+              disabled={loadingStatus !== null}
+            >
+              {loadingStatus === "interested" ? (
+                <span className="loading loading-spinner loading-sm"></span>
+              ) : (
+                "♥ Interested"
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
