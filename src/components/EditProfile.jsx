@@ -37,10 +37,7 @@ const EditProfile = ({ user }) => {
       setShowToast(true);
       setTimeout(() => setShowToast(false), 3000);
     } catch (error) {
-      console.error("Full error:", error);
-      console.error("Response data:", error?.response?.data);
-      console.error("Response status:", error?.response?.status);
-      setError(error?.response?.data || error?.message || "Failed to save profile.");
+      setError(error?.response?.data?.message || error?.message || "Failed to save profile.");
     } finally {
       setLoading(false);
     }

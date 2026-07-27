@@ -28,7 +28,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {
-      setError(error?.response?.data || "Something went wrong!");
+      setError(error?.response?.data?.message || "Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       navigate("/profile");
     } catch (error) {
-      setError(error?.response?.data || "Something went wrong!");
+      setError(error?.response?.data?.message || "Something went wrong!");
     } finally {
       setLoading(false);
     }
