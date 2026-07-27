@@ -61,7 +61,7 @@ const Chat = () => {
     });
 
     return () => {
-      socket.disconnect(); // fixed typo: was socket.disconnet()
+      socket.disconnect(); 
     };
   }, [userId, targetUserId]);
 
@@ -88,7 +88,7 @@ const Chat = () => {
 
   return (
     <div className="max-w-3xl mx-auto my-6 px-4">
-      {/* Header */}
+  
       <div className="flex items-center gap-3 p-4 bg-base-300 rounded-t-xl border-b border-base-200">
         <button
           className="btn btn-ghost btn-sm btn-circle"
@@ -99,7 +99,6 @@ const Chat = () => {
         <h1 className="font-semibold text-lg">Chat</h1>
       </div>
 
-      {/* Messages */}
       <div className="bg-base-300 h-[60vh] overflow-y-auto p-4 space-y-1">
         {loading ? (
           <div className="flex justify-center items-center h-full">
@@ -131,7 +130,6 @@ const Chat = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input */}
       <div className="p-3 bg-base-300 rounded-b-xl border-t border-base-200 flex items-center gap-2">
         <input
           value={newMessage}

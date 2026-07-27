@@ -9,7 +9,7 @@ const Requests = () => {
   const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(!requests);
-  const [actionLoading, setActionLoading] = useState({}); // { [requestId]: "accepted" | "rejected" }
+  const [actionLoading, setActionLoading] = useState({});
 
   const reviewRequest = async (status, requestId) => {
     setActionLoading((prev) => ({ ...prev, [requestId]: status }));

@@ -46,7 +46,6 @@ const EditProfile = ({ user }) => {
   return (
     <>
       <div className="flex flex-col lg:flex-row justify-center items-start gap-8 my-10 px-4">
-        {/* Form */}
         <div className="card bg-base-300 w-full max-w-md shadow-xl">
           <div className="card-body gap-3">
             <h2 className="card-title justify-center text-xl">Edit Profile</h2>
@@ -143,7 +142,6 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
 
-        {/* Live Preview */}
         <div className="flex flex-col items-center gap-2">
           <p className="text-sm opacity-50 font-medium uppercase tracking-wider">Preview</p>
           <UserCard

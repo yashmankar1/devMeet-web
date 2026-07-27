@@ -62,7 +62,7 @@ const Login = () => {
     <div className="flex justify-center items-center min-h-[80vh] px-4">
       <div className="card bg-base-300 w-full max-w-md shadow-xl">
         <div className="card-body gap-4">
-          {/* Logo / Brand */}
+      
           <div className="text-center mb-2">
             <h1 className="text-3xl font-bold text-primary">💻 devMeet</h1>
             <p className="text-sm opacity-60 mt-1">Connect with developers</p>

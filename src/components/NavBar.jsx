@@ -15,7 +15,6 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
-      // Clear all Redux slices so next login starts fresh
       dispatch(removeUser());
       dispatch(removeConnections());
       dispatch(addFeed(null));
