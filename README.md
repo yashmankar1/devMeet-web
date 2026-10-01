@@ -1,58 +1,58 @@
-💻 devMeet
+# 💻 devMeet
 
-A Tinder-style social networking platform for developers**. Browse developer profiles, show interest, send and manage connection requests, match with other developers, and chat with connections in real time.
+A **Tinder-style social networking platform for developers**. Browse developer profiles, show interest, send and manage connection requests, match with other developers, and chat with connections in real time.
 
-🌐 Live Demo: [devmeetup.me](https://devmeetup.me)
-⚙️ Frontend Repo: [yashmankar1/devMeet-web](https://github.com/yashmankar1/devMeet-web)
-🔧 Backend Repo: [yashmankar1/devMeet](https://github.com/yashmankar1/devMeet)
-
----
-
-✨ Features
-
-* 🔐 Authentication — Sign up and log in using JWT-based authentication with HTTP-only cookies
-* 🧑‍💻 Developer Feed — Browse developer profiles and show interest or ignore
-* 🤝 Connection Requests — Send, receive, accept, and reject connection requests
-* 💬 Real-Time Chat — One-to-one messaging using Socket.io
-* 💳 Premium Membership — Integrated Razorpay for premium subscriptions
-* ⚡ Modern UX — Loading skeletons, empty states, and user-friendly error handling
-* 📱 Responsive Design — Mobile-friendly interface built with Tailwind CSS and DaisyUI
-* 🔄 Global State Management — Redux Toolkit for managing authentication, feed, connections, and application state
+🌐 **Live Demo:** [devmeetup.me](https://devmeetup.me)
+⚙️ **Frontend Repo:** [yashmankar1/devMeet-web](https://github.com/yashmankar1/devMeet-web)
+🔧 **Backend Repo:** [yashmankar1/devMeet](https://github.com/yashmankar1/devMeet)
 
 ---
 
-🛠️ Tech Stack
+## ✨ Features
 
-Frontend
-
-* React 19
-* Vite
-* Redux Toolkit
-* React Router
-* Axios
-* Socket.io Client
-* Tailwind CSS
-* DaisyUI
-* Vercel
-
-Backend
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* HTTP-only Cookies
-* Socket.io
-* Razorpay
-* REST APIs
-* Render
+* 🔐 **Authentication** — Sign up and log in using JWT-based authentication with HTTP-only cookies
+* 🧑‍💻 **Developer Feed** — Browse developer profiles and show interest or ignore
+* 🤝 **Connection Requests** — Send, receive, accept, and reject connection requests
+* 💬 **Real-Time Chat** — One-to-one messaging using Socket.io
+* 💳 **Premium Membership** — Integrated Razorpay for premium subscriptions
+* ⚡ **Modern UX** — Loading skeletons, empty states, and user-friendly error handling
+* 📱 **Responsive Design** — Mobile-friendly interface built with Tailwind CSS and DaisyUI
+* 🔄 **Global State Management** — Redux Toolkit for managing authentication, feed, connections, and application state
 
 ---
 
-🏗️ Architecture
+## 🛠️ Tech Stack
 
- text
+### Frontend
+
+* **React 19**
+* **Vite**
+* **Redux Toolkit**
+* **React Router**
+* **Axios**
+* **Socket.io Client**
+* **Tailwind CSS**
+* **DaisyUI**
+* **Vercel**
+
+### Backend
+
+* **Node.js**
+* **Express.js**
+* **MongoDB**
+* **Mongoose**
+* **JWT Authentication**
+* **HTTP-only Cookies**
+* **Socket.io**
+* **Razorpay**
+* **REST APIs**
+* **Render**
+
+---
+
+## 🏗️ Architecture
+
+```text
                     ┌─────────────────────┐
                     │      React App      │
                     │   React + Vite      │
@@ -82,8 +82,9 @@ Backend
                     └──────────┘  └──────────────┘
 ```
 
-```
-🔐 Authentication
+---
+
+## 🔐 Authentication
 
 The application uses **JWT-based authentication with HTTP-only cookies**.
 
@@ -99,7 +100,7 @@ The authentication flow includes:
 
 ---
 
-💬 Real-Time Chat
+## 💬 Real-Time Chat
 
 devMeet uses **Socket.io** to provide real-time one-to-one communication between connected developers.
 
@@ -112,7 +113,7 @@ The chat system allows users to:
 
 ---
 
-💳 Premium Membership
+## 💳 Premium Membership
 
 Premium membership is integrated using **Razorpay**.
 
@@ -130,30 +131,30 @@ The payment flow includes:
 
 ---
 
-🚀 Run Locally
+## 🚀 Run Locally
 
- Prerequisites
+### Prerequisites
 
 Make sure you have:
 
-* Node.js 20+
-* MongoDB**
+* **Node.js 20+**
+* **MongoDB**
 * The devMeet backend running on port `7777`
 
-Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/yashmankar1/devMeet-web.git
 cd devMeet-web
 ```
 
-Install dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
- Start the development server
+### Start the development server
 
 ```bash
 npm run dev
@@ -167,7 +168,7 @@ http://localhost:5173
 
 ---
 
-🔑 Environment Variables
+## 🔑 Environment Variables
 
 Create a `.env` file in the project root.
 
@@ -181,22 +182,22 @@ Do not commit your `.env` file or expose API keys and other secrets publicly.
 
 ---
 
-🌐 Deployment
+## 🌐 Deployment
 
 The application is deployed using a production frontend/backend setup.
 
-Frontend
+### Frontend
 
-* Vercel
+* **Vercel**
 * Custom domain: **devmeetup.me**
 
-Backend
+### Backend
 
-* Render
+* **Render**
 
-Database
+### Database
 
-* MongoDB Atlas
+* **MongoDB Atlas**
 
 The project also required configuring:
 
@@ -209,11 +210,11 @@ The project also required configuring:
 
 ---
 
-📚 What I Learned
+## 📚 What I Learned
 
 Building devMeet helped me understand how a full-stack application works beyond simply writing frontend components.
 
-Frontend
+### Frontend
 
 * Building a React application with Vite
 * Managing global state with Redux Toolkit
@@ -223,7 +224,7 @@ Frontend
 * Implementing responsive UI with Tailwind CSS and DaisyUI
 * Managing loading, error, and empty states
 
-Backend
+### Backend
 
 * Designing REST APIs with Node.js and Express.js
 * Working with MongoDB and Mongoose
@@ -233,14 +234,14 @@ Backend
 * Creating and validating API requests
 * Building real-time communication with Socket.io
 
-Payments
+### Payments
 
 * Integrating Razorpay
 * Creating payment orders
 * Handling payment responses
 * Verifying payments securely on the backend
 
-Deployment
+### Deployment
 
 * Deploying a full-stack application
 * Connecting frontend and backend services
@@ -251,7 +252,7 @@ Deployment
 
 ---
 
-🧠 Challenges I Solved
+## 🧠 Challenges I Solved
 
 Some of the important problems I worked through while building and deploying devMeet included:
 
@@ -267,22 +268,21 @@ Some of the important problems I worked through while building and deploying dev
 
 ---
 
-🙏 Acknowledgement
+## 🙏 Acknowledgement
 
-This project was inspired by Akshay Saini's DevTinder project.
+This project was inspired by **Akshay Saini's DevTinder project**.
 
 I used the original project as a learning reference and extended the application with my own backend implementation, security improvements, UI improvements, real-time chat, premium membership functionality, and production deployment.
 
 ---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-Yash Mankar
+**Yash Mankar**
 
 * GitHub: [yashmankar1](https://github.com/yashmankar1)
 * Live Project: [devmeetup.me](https://devmeetup.me)
 
 ---
 
-⭐ If you found this project interesting, feel free to star the repository!
-
+⭐ **If you found this project interesting, feel free to star the repository!**
